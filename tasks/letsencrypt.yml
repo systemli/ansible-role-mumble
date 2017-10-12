@@ -1,0 +1,15 @@
+---
+
+- name: request Let's Encrypt certificate for mumble host
+  include_role:
+    name: letsencrypt
+  vars:
+    - letsencrypt_cert:
+        name: "{{ murmur_registerhostname }}"
+        domains:
+          - "{{ murmur_registerhostname }}"
+        challenge: dns
+        users:
+          - "{{ murmur_uname }}"
+        services:
+          - mumble-server

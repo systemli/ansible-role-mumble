@@ -1,0 +1,26 @@
+---
+
+- name: Install the python-zeroc-ice to get munin plugin work
+  apt:
+    pkg: python-zeroc-ice
+
+- name: install munin mumble plugin via git
+  git:
+    repo: git://github.com/cmur2/munin-mumble.git
+    dest: /usr/local/share/munin-mumble/
+
+- name: ensure monit service config is latest
+  copy:
+    src: "monit/conf.d/mumble-server"
+    dest: "/etc/monit/conf.d/mumble-server"
+    owner: root
+    group: root
+    mode: 0600
+  notify: restart monit
+
+- name: ensure mumble plugins are present
+  file:
+    src: "/usr/local/share/munin-mumble/mumble"
+    dest: "/etc/munin/plugins/mumble"
+    state: link
+  notify: restart munin-node
