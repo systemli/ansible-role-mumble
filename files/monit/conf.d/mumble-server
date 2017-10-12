@@ -1,0 +1,4 @@
+check process mumble-server with pidfile /var/run/mumble-server/mumble-server.pid
+    start program = "/etc/init.d/mumble-server start" with timeout 60 seconds
+    stop program  = "/etc/init.d/mumble-server stop"
+    group server
