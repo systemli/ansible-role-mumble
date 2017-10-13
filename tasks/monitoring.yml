@@ -3,6 +3,12 @@
 - name: Install the python-zeroc-ice to get munin plugin work
   apt:
     pkg: python-zeroc-ice
+  when: ansible_distribution_major_version|int <= 8
+
+- name: Install the python3-zeroc-ice to get munin plugin work
+  apt:
+    pkg: python3-zeroc-ice
+  when: ansible_distribution_major_version|int >= 9
 
 - name: install munin mumble plugin via git
   git:
