@@ -87,15 +87,6 @@ Example Playbook
          - { role: systemli.mumble }
 ```
 
-Testing & Development
----------------------
-
-For developing and testing the role we use Travis CI and molecule(v2). On the local environment you can easily test the role with
-
-```
-molecule test
-```
-
 License
 -------
 

@@ -1,13 +1,9 @@
 ---
 
 - include: letsencrypt.yml
-  when: murmur_letsencrypt_enabled
-  tags:
-    - molecule_test_skip
+  when: murmur_letsencrypt_enabled and not __testing|default()
 
 - include: mumble.yml
 
 - include: monitoring.yml
-  when: murmur_monitoring_enabled
-  tags:
-    - molecule_test_skip
+  when: murmur_monitoring_enabled and not __testing|default()
