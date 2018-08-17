@@ -1,6 +1,0 @@
----
-- src: https://github.com/jnv/ansible-role-debian-backports.git
-  name: jnv.debian-backports
-  when: ansible_distribution_major_version|int <= 8
-- src: https://github.com/systemli/ansible-role-letsencrypt
-  name: letsencrypt
