@@ -1,0 +1,8 @@
+---
+- name: Converge
+  hosts: all
+  become: True
+  roles:
+    - role: ansible-role-mumble
+  vars:
+    __testing: true
