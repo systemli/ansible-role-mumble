@@ -7,10 +7,7 @@
 
 - name: ensure required packages are present
   apt:
-    pkg: "{{ item }}"
-    default_release: "{{ 'jessie-backports' if ansible_distribution_release == 'jessie' else omit }}"
-  with_items:
-    - mumble-server
+    pkg: mumble-server
 
 - name: generate the Murmur config file
   template:
