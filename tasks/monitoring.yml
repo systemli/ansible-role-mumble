@@ -23,10 +23,12 @@
     group: root
     mode: 0600
   notify: restart monit
+  when: murmur_monitoring_monit_enabled
 
 - name: ensure mumble plugins are present
   file:
     src: "/usr/local/share/munin-mumble/mumble"
     dest: "/etc/munin/plugins/mumble"
     state: link
+  when: murmur_monitoring_munin_enabled
   notify: restart munin-node
