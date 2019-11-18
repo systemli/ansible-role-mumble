@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: mumble
   author: systemli
   description: Install and maintain mumble-server. Contains tests for Molecule.
   company: systemli.org
