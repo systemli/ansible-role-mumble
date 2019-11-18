@@ -2,8 +2,6 @@
 
 murmur_database: "/var/lib/mumble-server/mumble-server.sqlite"
 murmur_dbdriver: ""
-murmur_dbus: "system"
-murmur_dbusservice: ""
 murmur_ice: "tcp -h 127.0.0.1 -p 6502"
 murmur_icesecretread: ""
 murmur_icesecretwrite: ""
