@@ -59,8 +59,6 @@ Role Variables
   murmur_icewarnunknownproperties: "1"
   murmur_icemessagesizemax: "65536"
   
-  murmur_superuser_password: "password"
-  
   murmur_letsencrypt_enabled: False
   murmur_sslcert: "/etc/ssl/mumble-server-cert.pem"
   murmur_sslkey: "/etc/ssl/mumble-server-key.pem"

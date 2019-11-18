@@ -18,6 +18,21 @@
     mode: 0640
   notify: restart murmur
 
+- service:
+    name: mumble-server
+    enabled: True
+    state: started
+
+- name: write superuser password to a file
+  copy:
+    content: "{{ murmur_superuser_password }}"
+    dest: /srv/mumble-superuser
+    owner: root
+    group: root
+    mode: 0600
+  when: murmur_superuser_password is defined
+  register: superuser
+
 - name: set the superuser password [not idempodent]
   shell: murmurd -ini /etc/mumble-server.ini -supw "{{ murmur_superuser_password }}"
-  when: murmurd_installed.stat.exists == false
+  when: superuser.changed

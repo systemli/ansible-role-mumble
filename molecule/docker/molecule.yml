@@ -5,12 +5,9 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint:
-  name: yamllint
-  enabled: false
 platforms:
   - name: instance
-    image: "geerlingguy/docker-${MOLECULE_DISTRO:-debian9}-ansible:latest"
+    image: "geerlingguy/docker-${MOLECULE_DISTRO:-debian10}-ansible:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
