@@ -26,7 +26,7 @@
 - name: write superuser password to a file
   copy:
     content: "{{ murmur_superuser_password }}"
-    dest: /srv/mumble-superuser
+    dest: /etc/mumble-superuser
     owner: root
     group: root
     mode: 0600
