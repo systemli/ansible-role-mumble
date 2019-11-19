@@ -53,3 +53,6 @@ murmur_sslca: "/etc/ssl/letsencrypt_chain.pem"
 
 murmur_monitoring_monit_enabled: False
 murmur_monitoring_munin_enabled: False
+murmur_monitoring_munin_packages:
+  - python3-zeroc-ice
+  - zeroc-ice-slice

@@ -1,19 +1,26 @@
 ---
 
-- name: Install the python-zeroc-ice to get munin plugin work
+- name: Install dependencies to make munin plugin work
   apt:
-    pkg: python-zeroc-ice
-  when: ansible_distribution_major_version|int <= 8
-
-- name: Install the python3-zeroc-ice to get munin plugin work
-  apt:
-    pkg: python3-zeroc-ice
+    pkg: "{{ murmur_monitoring_munin_packages }}"
   when: ansible_distribution_major_version|int >= 9
 
-- name: install munin mumble plugin via git
-  git:
-    repo: git://github.com/cmur2/munin-mumble.git
-    dest: /usr/local/share/munin-mumble/
+# plugin taken from https://github.com/Natenom/munin-plugins/issues/10
+- name: copy munin plugin
+  copy:
+    src: murmur-munin.py
+    dest: /usr/local/share/
+    owner: root
+    group: root
+    mode: 0755
+
+- name: ensure mumble plugins are present
+  file:
+    src: "/usr/local/share/murmur-munin.py"
+    dest: "/etc/munin/plugins/mumble"
+    state: link
+  when: murmur_monitoring_munin_enabled
+  notify: restart munin-node
 
 - name: ensure monit service config is latest
   copy:
@@ -24,11 +31,3 @@
     mode: 0600
   notify: restart monit
   when: murmur_monitoring_monit_enabled
-
-- name: ensure mumble plugins are present
-  file:
-    src: "/usr/local/share/munin-mumble/mumble"
-    dest: "/etc/munin/plugins/mumble"
-    state: link
-  when: murmur_monitoring_munin_enabled
-  notify: restart munin-node
