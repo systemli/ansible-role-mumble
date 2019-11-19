@@ -36,3 +36,4 @@
 - name: set the superuser password [not idempodent]
   shell: murmurd -ini /etc/mumble-server.ini -supw "{{ murmur_superuser_password }}"
   when: superuser.changed
+  failed_when: False
