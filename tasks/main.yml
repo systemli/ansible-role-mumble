@@ -1,10 +1,5 @@
 ---
 
-- include: letsencrypt.yml
-  when: murmur_letsencrypt_enabled
-  tags:
-    - molecule-notest
-
 - include: mumble.yml
 
 - include: monitoring.yml

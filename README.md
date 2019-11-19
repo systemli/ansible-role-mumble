@@ -59,7 +59,6 @@ Role Variables
   murmur_icewarnunknownproperties: "1"
   murmur_icemessagesizemax: "65536"
   
-  murmur_letsencrypt_enabled: False
   murmur_sslcert: "/etc/ssl/mumble-server-cert.pem"
   murmur_sslkey: "/etc/ssl/mumble-server-key.pem"
   murmur_sslca: "/etc/ssl/letsencrypt_chain.pem"
@@ -79,9 +78,20 @@ Example Playbook
 ----------------
 
 ```
-    - hosts: mumbleservers
-      roles:
-         - { role: systemli.mumble }
+- hosts: mumbleservers
+  roles:
+     - { role: systemli.letsencrypt }
+     - { role: systemli.mumble }
+  vars:
+    - letsencrypt_cert:
+        name: "{{ murmur_registerhostname }}"
+        domains:
+          - "{{ murmur_registerhostname }}"
+        challenge: dns
+        users:
+          - "{{ murmur_uname }}"
+        services:
+          - mumble-server
 ```
 
 Testing & Development
