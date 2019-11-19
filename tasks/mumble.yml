@@ -18,7 +18,8 @@
     mode: 0640
   notify: restart murmur
 
-- service:
+- name: always start service
+  service:
     name: mumble-server
     enabled: True
     state: started
@@ -31,9 +32,4 @@
     group: root
     mode: 0600
   when: murmur_superuser_password is defined
-  register: superuser
-
-- name: set the superuser password [not idempodent]
-  shell: murmurd -ini /etc/mumble-server.ini -supw "{{ murmur_superuser_password }}"
-  when: superuser.changed
-  failed_when: False
+  notify: set superuser password

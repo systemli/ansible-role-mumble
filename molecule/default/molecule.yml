@@ -10,10 +10,7 @@ platforms:
     box: debian/buster64
 provisioner:
   name: ansible
-  become: true
-  lint:
-    name: ansible-lint
-    enabled: False
+  become: True
 lint:
   name: yamllint
   enabled: True
