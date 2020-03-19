@@ -2,7 +2,7 @@
 
 - name: install dependencies
   apt:
-    pkg: "{{ mumble_web_packages }}"
+    pkg: websockify
 
 - name: install mumble-web
   npm:
