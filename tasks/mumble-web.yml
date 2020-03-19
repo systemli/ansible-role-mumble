@@ -1,0 +1,32 @@
+---
+
+- name: install dependencies
+  apt:
+    pkg: "{{ mumble_web_packages }}"
+
+- name: install mumble-web
+  npm:
+    name: mumble-web
+    global: True
+
+- name: copy mumble-web unit file
+  template:
+    src: mumble-web.service.j2
+    dest: /etc/systemd/system/mumble-web.service
+    owner: root
+    group: root
+    mode: 0644
+  register: servicefile
+
+- name: Allow to python to inherit socket binding capability
+  capabilities:
+    path: /usr/bin/python2.7
+    capability: cap_net_bind_service=ei
+  when: servicefile.changed
+
+- name: enable and start mumble-web
+  systemd:
+    daemon_reload: True
+    name: mumble-web
+    enabled: True
+    state: started

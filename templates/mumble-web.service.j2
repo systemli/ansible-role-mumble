@@ -1,0 +1,20 @@
+[Unit]
+Description=Mumble-web
+
+[Service]
+SyslogIdentifier=mumble-web
+ExecStart=/usr/bin/python2.7 /usr/bin/python2-websockify --cert={{ murmur_sslcert }} --key={{ murmur_sslkey }} --ssl-only --ssl-target --web={{ mumble_web_path }}/dist 443 localhost:64738
+DynamicUser=true
+; we need access to the certs
+{% if mumble_web_supplementary_groups is defined %}
+SupplementaryGroups={{ mumble_web_supplementary_groups }}
+{% endif %}
+; The following additional security directives only work with systemd v229 or later.
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+; Always run
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

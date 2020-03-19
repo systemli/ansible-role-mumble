@@ -1,8 +1,4 @@
 ---
-scenario:
-  name: docker
-dependency:
-  name: galaxy
 driver:
   name: docker
 platforms:
@@ -13,11 +9,8 @@ platforms:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
     pre_build_image: true
+lint: yamllint .
 provisioner:
   name: ansible
   playbooks:
-    converge: ../default/playbook.yml
-verifier:
-  name: testinfra
-  lint:
-    name: flake8
+    converge: ../default/converge.yml

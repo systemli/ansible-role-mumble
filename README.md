@@ -1,12 +1,12 @@
 ansible-role-mumble
 ===========================
 
-[![Build Status](https://travis-ci.org/systemli/ansible-role-mumble.svg)](https://travis-ci.org/systemli/ansible-role-mumble) [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-mumble-blue.svg)](https://galaxy.ansible.com/systemli/mumble/)
+[![Build Status](https://travis-ci.org/systemli/ansible-role-mumble.svg?branch=master)](https://travis-ci.org/systemli/ansible-role-mumble) [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-mumble-blue.svg)](https://galaxy.ansible.com/systemli/mumble/)
 
 
-Install and configure a mumble server (murmur-server).
-
-
+Install and configure a mumble server (murmur).
+The role can also install [mumble-web](https://github.com/Johni0702/mumble-web).
+Mumble-web requires `systemd` >= 235 and `npm` to be installed.
 
 Role Variables
 --------------
@@ -65,6 +65,12 @@ Role Variables
   
   murmur_monitoring_monit_enabled: False
   murmur_monitoring_munin_enabled: False
+
+  # mumble-web settings
+  mumble_web: False
+  mumble_web_path: /usr/lib/node_modules/mumble-web/
+  # mumble_web_supplementary_groups:
+  #   - letsencrypt
 ```
 
 Download
@@ -80,35 +86,33 @@ Example Playbook
 ```
 - hosts: mumbleservers
   roles:
+     - { role: geerlingguy.nodejs }
      - { role: systemli.letsencrypt }
      - { role: systemli.mumble }
   vars:
-    - letsencrypt_cert:
-        name: "{{ murmur_registerhostname }}"
-        domains:
-          - "{{ murmur_registerhostname }}"
-        challenge: dns
-        users:
-          - "{{ murmur_uname }}"
-        services:
-          - mumble-server
+    letsencrypt_cert:
+      name: "{{ murmur_registerhostname }}"
+      domains:
+        - "{{ murmur_registerhostname }}"
+      challenge: dns
+      users:
+        - "{{ murmur_uname }}"
+      services:
+        - mumble-server
 ```
-
-Testing & Development
----------------------
 
 Tests
 -----
 
 For developing and testing the role we use Travis CI, Molecule and Vagrant. On the local environment you can easily test the role with
 
-Run local tests with:
+Run local tests with: 
 
 ```
 molecule test 
 ```
 
-Requires Molecule, Vagrant and `python-vagrant` to be installed.For developing and testing the role we use Travis CI, Molecule and Vagrant. On the local environment you can easily test the role with
+This requires Molecule, Vagrant and `python-vagrant` to be installed.
 
 License
 -------

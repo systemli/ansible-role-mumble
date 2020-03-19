@@ -1,6 +1,4 @@
 ---
-scenario:
-  name: default
 driver:
   name: vagrant
   provider:
@@ -11,6 +9,4 @@ platforms:
 provisioner:
   name: ansible
   become: True
-lint:
-  name: yamllint
-  enabled: True
+lint: yamllint .
