@@ -18,3 +18,9 @@
 - name: set superuser password
   command: murmurd -ini /etc/mumble-server.ini -supw "{{ murmur_superuser_password }}"
   failed_when: False
+
+- name: restart mumble-web
+  systemd:
+    daemon_reload: True
+    name: mumble-web
+    state: restarted

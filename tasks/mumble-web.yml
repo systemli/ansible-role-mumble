@@ -17,6 +17,7 @@
     group: root
     mode: 0644
   register: servicefile
+  notify: restart mumble-web
 
 - name: Allow to python to inherit socket binding capability
   capabilities:
@@ -26,7 +27,6 @@
 
 - name: enable and start mumble-web
   systemd:
-    daemon_reload: True
     name: mumble-web
     enabled: True
     state: started
