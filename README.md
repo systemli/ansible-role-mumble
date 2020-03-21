@@ -69,6 +69,8 @@ Role Variables
   # mumble-web settings
   mumble_web: False
   mumble_web_path: /usr/lib/node_modules/mumble-web/
+  # to define use yaml multiline string
+  mumble_web_config: ""
   # mumble_web_supplementary_groups:
   #   - letsencrypt
 ```

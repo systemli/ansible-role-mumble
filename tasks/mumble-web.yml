@@ -25,6 +25,14 @@
     capability: cap_net_bind_service=ei
   when: servicefile.changed
 
+- name: configure mumble-web
+  template:
+    src: config.local.js.j2
+    dest: "{{ mumble_web_path }}/dist/config.local.js"
+    owner: root
+    group: root
+    mode: 0644
+
 - name: enable and start mumble-web
   systemd:
     name: mumble-web
