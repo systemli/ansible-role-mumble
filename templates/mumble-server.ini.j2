@@ -193,6 +193,9 @@ channelnestinglimit={{ murmur_channelnestinglimit }}
 ; Maximum number of channels per server. 0 for unlimited. Note that an
 ; excessive number of channels will impact server performance
 ;channelcountlimit=1000
+{% if murmur_channelcountlimit %}
+channelcountlimit={{ murmur_channelcountlimit }}
+{% endif %}
 
 ; Regular expression used to validate channel names.
 ; (Note that you have to escape backslashes with \ )

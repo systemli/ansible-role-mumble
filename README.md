@@ -29,6 +29,7 @@ Role Variables
   murmur_bandwidth: "72000"
   murmur_users: "100"
   murmur_opusthreshold: "100"
+  murmur_channelcountlimit: "1000"
   murmur_channelnestinglimit: "10"
   
   # regexp to validate channel or usernames
@@ -65,7 +66,10 @@ Role Variables
   
   murmur_monitoring_monit_enabled: False
   murmur_monitoring_munin_enabled: False
-
+  murmur_monitoring_munin_packages:
+    - python3-zeroc-ice
+    - zeroc-ice-slice
+  
   # mumble-web settings
   mumble_web: False
   mumble_web_path: /usr/lib/node_modules/mumble-web/

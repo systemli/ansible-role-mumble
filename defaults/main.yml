@@ -17,6 +17,7 @@ murmur_serverpassword: ""
 murmur_bandwidth: "72000"
 murmur_users: "100"
 murmur_opusthreshold: "100"
+murmur_channelcountlimit: "1000"
 murmur_channelnestinglimit: "10"
 
 # regexp to validate channel or usernames
