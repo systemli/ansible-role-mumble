@@ -77,6 +77,10 @@ Role Variables
   mumble_web_config: ""
   # mumble_web_supplementary_groups:
   #   - letsencrypt
+  mumble_web_port: "443"
+  mumble_web_listen: "{{ mumble_web_port }}"
+  murmur_web_ssl_activated: True
+  murmur_web_ssl_target: False
 ```
 
 Download

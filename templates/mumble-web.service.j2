@@ -3,7 +3,10 @@ Description=Mumble-web
 
 [Service]
 SyslogIdentifier=mumble-web
-ExecStart=/usr/bin/python2.7 /usr/bin/python2-websockify --cert={{ murmur_sslcert }} --key={{ murmur_sslkey }} --ssl-only --ssl-target --web={{ mumble_web_path }}/dist 443 localhost:64738
+ExecStart=/usr/bin/python2.7 /usr/bin/python2-websockify \
+  {% if murmur_web_ssl_activated %} --cert={{ murmur_sslcert }} --key={{ murmur_sslkey }} --ssl-only  --ssl-target \
+  {% elif murmur_web_ssl_target %} --ssl-target \ {% endif %}
+  --web={{ mumble_web_path }}/dist {{ mumble_web_listen }} localhost:{{ murmur_port }}
 DynamicUser=true
 ; we need access to the certs
 {% if mumble_web_supplementary_groups is defined %}
