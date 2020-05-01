@@ -36,5 +36,6 @@
 - name: enable and start mumble-web
   systemd:
     name: mumble-web
+    daemon-reload: yes
     enabled: True
     state: started
