@@ -79,7 +79,7 @@ Role Variables
   #   - letsencrypt
   mumble_web_listen: "443"
   mumble_web_ssl_activated: True
-  mumble_web_ssl_target: False
+  mumble_web_ssl_target: True
 ```
 
 Download
