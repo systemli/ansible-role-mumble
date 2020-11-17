@@ -1,7 +1,8 @@
 ansible-role-mumble
 ===========================
 
-[![Build Status](https://travis-ci.org/systemli/ansible-role-mumble.svg?branch=master)](https://travis-ci.org/systemli/ansible-role-mumble) [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-mumble-blue.svg)](https://galaxy.ansible.com/systemli/mumble/)
+[![Build Status](https://github.com/systemli/ansible-role-mumble/workflows/Molecule/badge.svg?branch=master)](https://github.com/systemli/ansible-role-mumble/actions?query=workflow%3AIntegration)
+[![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-mumble-blue.svg)](https://galaxy.ansible.com/systemli/mumble/)
 
 
 Install and configure a mumble server (murmur).
@@ -110,18 +111,24 @@ Example Playbook
         - mumble-server
 ```
 
+
+
+Testing & Development
+---------------------
+
 Tests
 -----
 
-For developing and testing the role we use Travis CI, Molecule and Vagrant. On the local environment you can easily test the role with
+For developing and testing the role we use Github Actions, Molecule, and Vagrant. On the local environment you can easily test the role with
 
-Run local tests with: 
+Run local tests with:
 
 ```
-molecule test 
+molecule test
 ```
 
-This requires Molecule, Vagrant and `python-vagrant` to be installed.
+Requires Molecule, Vagrant and `python-vagrant, molecule-goss, molecule-vagrant` to be installed.For developing and testing the role we use Travis CI, Molecule and Vagrant. On the local environment you can easily test the role with.
+
 
 License
 -------
