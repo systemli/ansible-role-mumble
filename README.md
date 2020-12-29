@@ -1,7 +1,7 @@
 ansible-role-mumble
 ===========================
 
-[![Build Status](https://github.com/systemli/ansible-role-mumble/workflows/Molecule/badge.svg?branch=master)](https://github.com/systemli/ansible-role-mumble/actions?query=workflow%3AIntegration)
+[![Build Status](https://github.com/systemli/ansible-role-mumble/workflows/Integration/badge.svg?branch=master)](https://github.com/systemli/ansible-role-mumble/actions?query=workflow%3AIntegration)
 [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-mumble-blue.svg)](https://galaxy.ansible.com/systemli/mumble/)
 
 
