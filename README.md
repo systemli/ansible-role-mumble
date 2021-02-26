@@ -64,6 +64,7 @@ Role Variables
   murmur_sslcert: "/etc/ssl/mumble-server-cert.pem"
   murmur_sslkey: "/etc/ssl/mumble-server-key.pem"
   murmur_sslca: "/etc/ssl/letsencrypt_chain.pem"
+  murmur_sslciphers: "EECDH+AESGCM:EDH+aRSA+AESGCM"
   
   murmur_monitoring_monit_enabled: False
   murmur_monitoring_munin_enabled: False
