@@ -8,6 +8,7 @@
 - name: ensure required packages are present
   apt:
     pkg: mumble-server
+    cache_valid_time: 3600
 
 - name: generate the Murmur config file
   template:
