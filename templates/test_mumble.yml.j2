@@ -11,5 +11,14 @@ process:
   murmurd:
     running: true
 port:
-  tcp:64738:
+  tcp6:64738:
     listening: true
+group:
+  mumble-server:
+    exists: true
+user:
+  mumble-server:
+    exists: true
+    groups:
+    - mumble-server
+    home: /var/lib/mumble-server
