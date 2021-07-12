@@ -13,6 +13,7 @@ lint: yamllint .
 provisioner:
   name: ansible
   playbooks:
+    prepare: ../default/prepare.yml
     converge: ../default/converge.yml
 verifier:
   name: goss
