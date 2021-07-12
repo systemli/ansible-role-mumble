@@ -17,7 +17,3 @@
       command: openssl req -new -nodes -x509 -subj "/C=US/ST=Oregon/L=Portland/O=IT/CN=${ansible_fqdn}" -days 3650 -keyout {{ murmur_sslkey }} -out {{ murmur_sslcert }} -extensions v3_ca
       args:
         creates: "{{ murmur_sslcert }}"
-
-    - name: install nodejs
-      import_role:
-        name: geerlingguy.nodejs

@@ -17,4 +17,6 @@ galaxy_info:
         - buster
   notifications:
     webhooks: https://galaxy.ansible.com/api/v1/notifications/
-dependencies: []
+dependencies:
+  - role: geerlingguy.nodejs
+    when: mumble_web
