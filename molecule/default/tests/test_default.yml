@@ -1,0 +1,12 @@
+---
+
+package:
+  mumble-server:
+    installed: true
+service:
+  mumble-server:
+    enabled: true
+    running: true
+process:
+  murmurd:
+    running: true

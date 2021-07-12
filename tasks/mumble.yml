@@ -19,6 +19,14 @@
     mode: 0640
   notify: restart murmur
 
+- name: ensure mumble owns key
+  file:
+    path: "{{ murmur_sslkey }}"
+    owner: mumble-server
+    group: mumble-server
+    mode: 0600
+  notify: restart murmur
+
 - name: always start service
   service:
     name: mumble-server
