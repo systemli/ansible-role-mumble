@@ -10,3 +10,6 @@ service:
 process:
   murmurd:
     running: true
+port:
+  tcp:64738:
+    listening: true
