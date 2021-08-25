@@ -65,7 +65,7 @@ mumble_web_path: /usr/lib/node_modules/mumble-web/
 # to define use yaml multiline string
 mumble_web_config: ""
 # mumble_web_supplementary_groups:
-#   - letsencrypt
+#   - mumble-server
 
 mumble_web_listen: "443"
 mumble_web_ssl_activated: True
