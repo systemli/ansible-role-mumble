@@ -24,7 +24,7 @@
     path: "{{ murmur_sslkey }}"
     owner: root
     group: mumble-server
-    mode: 0644
+    mode: 0640
   notify: restart murmur
 
 - name: always start service
