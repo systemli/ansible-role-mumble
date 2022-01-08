@@ -260,7 +260,9 @@ bonjour={{ murmur_bonjour }}
 {% if murmur_sslcert %}
 sslCert={{ murmur_sslcert }}
 sslKey={{ murmur_sslkey }}
+{% if murmur_sslca is defined %}
 sslCa={{ murmur_sslca }}
+{% endif %}
 {% endif %}
 
 ; The sslDHParams option allows you to specify a PEM-encoded file with
