@@ -11,7 +11,7 @@ process:
   murmurd:
     running: true
 port:
-  tcp6:64738:
+  tcp:64738:
     listening: true
 group:
   mumble-server:
