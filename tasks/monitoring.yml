@@ -1,32 +1,31 @@
 ---
-
 - name: Install dependencies to make munin plugin work
-  apt:
+  ansible.builtin.apt:
     pkg: "{{ murmur_monitoring_munin_packages }}"
 
 # plugin taken from https://github.com/Natenom/munin-plugins/issues/10
-- name: copy munin plugin
-  copy:
+- name: Copy munin plugin
+  ansible.builtin.copy:
     src: murmur-munin.py
     dest: /usr/local/share/
     owner: root
     group: root
-    mode: 0755
+    mode: "0755"
 
-- name: ensure mumble plugins are present
-  file:
+- name: Ensure mumble plugins are present
+  ansible.builtin.file:
     src: "/usr/local/share/murmur-munin.py"
     dest: "/etc/munin/plugins/mumble"
     state: link
   when: murmur_monitoring_munin_enabled
-  notify: restart munin-node
+  notify: Restart munin-node
 
-- name: ensure monit service config is latest
-  copy:
+- name: Ensure monit service config is latest
+  ansible.builtin.copy:
     src: "monit/conf.d/mumble-server"
     dest: "/etc/monit/conf.d/mumble-server"
     owner: root
     group: root
-    mode: 0600
-  notify: restart monit
+    mode: "0600"
+  notify: Restart monit
   when: murmur_monitoring_monit_enabled

@@ -1,26 +1,32 @@
 ---
-
-- name: restart murmur
-  service:
+- name: Restart murmur
+  ansible.builtin.service:
     name: mumble-server
     state: restarted
 
-- name: restart munin-node
-  service:
+- name: Restart munin-node
+  ansible.builtin.service:
     name: munin-node
     state: restarted
 
-- name: restart monit
-  service:
+- name: Restart monit
+  ansible.builtin.service:
     name: monit
     state: restarted
 
-- name: set superuser password
-  command: murmurd -ini /etc/mumble-server.ini -supw "{{ murmur_superuser_password }}"
+- name: Set superuser password
+  ansible.builtin.command: murmurd -ini /etc/mumble-server.ini -supw "{{ murmur_superuser_password }}"
+  register: murmurd_superuser_password
+  changed_when: murmurd_superuser_password.rc != 0
   failed_when: False
 
-- name: restart mumble-web
-  systemd:
+- name: Restart mumble-web
+  ansible.builtin.systemd:
     daemon_reload: True
     name: mumble-web
     state: restarted
+
+- name: Set Python capabilities
+  community.general.capabilities:
+    path: /usr/bin/python2.7
+    capability: cap_net_bind_service=ei

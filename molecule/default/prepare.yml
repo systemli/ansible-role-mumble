@@ -1,5 +1,4 @@
 ---
-
 - name: Prepare
   hosts: all
   become: True
@@ -9,11 +8,11 @@
     nodejs_install_npm_user: root
   tasks:
     - name: Install OpenSSL
-      apt:
+      ansible.builtin.apt:
         pkg: openssl
         cache_valid_time: 3600
 
-    - name: create self-signed SSL cert
-      command: openssl req -new -nodes -x509 -subj "/C=US/ST=Oregon/L=Portland/O=IT/CN=${ansible_fqdn}" -days 3650 -keyout {{ murmur_sslkey }} -out {{ murmur_sslcert }} -extensions v3_ca
+    - name: Create self-signed SSL cert
+      ansible.builtin.command: "openssl req -new -nodes -x509 -subj '/C=US/ST=Oregon/L=Portland/O=IT/CN=${ansible_fqdn}' -days 3650 -keyout {{ murmur_sslkey }} -out {{ murmur_sslcert }} -extensions v3_ca"
       args:
         creates: "{{ murmur_sslcert }}"
