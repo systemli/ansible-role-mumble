@@ -1,4 +1,6 @@
 ---
-
 roles:
-  - geerlingguy.nodejs
+  - name: geerlingguy.nodejs
+    version: 6.1.1
+collections:
+  - community.general

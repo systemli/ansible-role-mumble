@@ -1,53 +1,53 @@
 ---
-- name: check if murmurd is already installed.
-  stat:
+- name: Check if murmurd is already installed.
+  ansible.builtin.stat:
     path: /usr/sbin/murmurd
   register: murmurd_installed
 
-- name: ensure required packages are present
-  apt:
+- name: Ensure required packages are present
+  ansible.builtin.apt:
     pkg: mumble-server
     cache_valid_time: 3600
 
-- name: generate the Murmur config file
-  template:
+- name: Generate the Murmur config file
+  ansible.builtin.template:
     src: "mumble-server.ini.j2"
     dest: "/etc/mumble-server.ini"
     owner: root
     group: mumble-server
-    mode: 0640
-  notify: restart murmur
+    mode: "0640"
+  notify: Restart murmur
 
 - name: Allow mumble user to access sslkey
   block:
-    - name: check if we can access key
-      command: cat "{{ murmur_sslkey }}"
+    - name: Check if we can access key
+      ansible.builtin.command: cat "{{ murmur_sslkey }}"
       become: true
       become_user: mumble-server
       changed_when: false
       check_mode: false
 
   rescue:
-    - name: ensure mumble owns key
-      file:
+    - name: Ensure mumble owns key
+      ansible.builtin.file:
         path: "{{ murmur_sslkey }}"
         owner: root
         group: mumble-server
-        mode: 0640
-      notify: restart murmur
+        mode: "0640"
+      notify: Restart murmur
 
-- name: always start service
-  service:
+- name: Always start service
+  ansible.builtin.service:
     name: mumble-server
     enabled: True
     state: started
 
-- name: write superuser password to a file
-  copy:
+- name: Write superuser password to a file
+  ansible.builtin.copy:
     content: "{{ murmur_superuser_password }}"
     dest: /etc/mumble-superuser
     owner: root
     group: root
     mode: 0600
   when: murmur_superuser_password is defined
-  notify: set superuser password
+  notify: Set superuser password
