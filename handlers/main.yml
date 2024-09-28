@@ -4,16 +4,6 @@
     name: mumble-server
     state: restarted
 
-- name: Restart munin-node
-  ansible.builtin.service:
-    name: munin-node
-    state: restarted
-
-- name: Restart monit
-  ansible.builtin.service:
-    name: monit
-    state: restarted
-
 - name: Set superuser password
   ansible.builtin.command: murmurd -ini /etc/mumble-server.ini -supw "{{ murmur_superuser_password }}"
   register: murmurd_superuser_password
