@@ -7,10 +7,6 @@
   when: mumble_web
   tags: mumble-web
 
-- name: Import monitoring tasks
-  ansible.builtin.import_tasks: monitoring.yml
-  when: murmur_monitoring_monit_enabled or murmur_monitoring_munin_enabled
-
 - name: Import goss tasks
   ansible.builtin.import_tasks: goss.yml
   tags:

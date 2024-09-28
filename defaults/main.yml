@@ -1,5 +1,4 @@
 ---
-
 murmur_database: "/var/lib/mumble-server/mumble-server.sqlite"
 murmur_dbdriver: ""
 murmur_ice: "tcp -h 127.0.0.1 -p 6502"
@@ -51,12 +50,6 @@ murmur_icemessagesizemax: "65536"
 murmur_sslcert: "/etc/ssl/mumble-server-cert.pem"
 murmur_sslkey: "/etc/ssl/mumble-server-key.pem"
 murmur_sslciphers: "EECDH+AESGCM:EDH+aRSA+AESGCM"
-
-murmur_monitoring_monit_enabled: False
-murmur_monitoring_munin_enabled: False
-murmur_monitoring_munin_packages:
-  - python3-zeroc-ice
-  - zeroc-ice-slice
 
 # mumble-web settings
 mumble_web: False
