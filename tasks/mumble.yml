@@ -12,11 +12,14 @@
 - name: Generate the Murmur config file
   ansible.builtin.template:
     src: "mumble-server.ini.j2"
-    dest: "/etc/mumble-server.ini"
+    dest: "{{ _mumble_config_path }}"
     owner: root
     group: mumble-server
     mode: "0640"
+  vars:
+    _mumble_config_path: "{{ '/etc/mumble-server.ini' if ansible_distribution_major_version|int <= 12 else '/etc/mumble/mumble-server.ini' }}"
   notify: Restart murmur
+  
 
 - name: Allow mumble user to access sslkey
   block:

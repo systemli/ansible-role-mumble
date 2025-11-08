@@ -9,7 +9,7 @@ murmur_autobantimeframe: "120"
 murmur_autobantime: "300"
 murmur_logfile: "/var/log/mumble-server/mumble-server.log"
 murmur_pidfile: "/var/run/mumble-server/mumble-server.pid"
-murmur_welcometext: "Welcome on my mumble server!"
+murmur_welcometext: "<br />Welcome to this server running <b>Mumble</b>.<br />Enjoy your stay!<br />"
 murmur_port: "64738"
 murmur_host: ""
 murmur_serverpassword: ""
@@ -39,8 +39,8 @@ murmur_registerurl: "https://mymumbleserverurl.org"
 murmur_registerhostname: "mymumblehostname.domain.org"
 
 # for dev
-# murmur_bonjour: "True"
-murmur_bonjour: "False"
+# murmur_bonjour: "true"
+murmur_bonjour: "false"
 murmur_uname: "mumble-server"
 murmur_certrequired: "False"
 murmur_sendversion: "True"
@@ -53,7 +53,7 @@ murmur_sslciphers: "EECDH+AESGCM:EDH+aRSA+AESGCM"
 
 # mumble-web settings
 mumble_web: False
-mumble_web_path: /usr/lib/node_modules/mumble-web/
+mumble_web_path: /usr/lib/noe_modules/mumble-web/
 # to define use yaml multiline string
 mumble_web_config: ""
 # mumble_web_supplementary_groups:
