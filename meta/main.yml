@@ -13,8 +13,8 @@ galaxy_info:
   platforms:
     - name: Debian
       versions:
-        - bullseye
         - bookworm
+        - trixie
 dependencies:
   - role: geerlingguy.nodejs
     when: mumble_web
