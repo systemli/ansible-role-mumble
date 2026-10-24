@@ -1,7 +1,7 @@
 ansible-role-mumble
 ===========================
 
-[![Build Status](https://github.com/systemli/ansible-role-mumble/workflows/Integration/badge.svg?branch=master)](https://github.com/systemli/ansible-role-mumble/actions?query=workflow%3AIntegration)
+[![Build Status](https://github.com/systemli/ansible-role-mumble/workflows/Integration/badge.svg?branch=main)](https://github.com/systemli/ansible-role-mumble/actions/workflows/main.yml)
 [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-mumble-blue.svg)](https://galaxy.ansible.com/systemli/mumble/)
 
 
@@ -119,15 +119,13 @@ Testing & Development
 Tests
 -----
 
-For developing and testing the role we use Github Actions, Molecule, and Vagrant. On the local environment you can easily test the role with
-
-Run local tests with:
+For developing and testing the role we use GitHub Actions and Molecule with the Docker driver. CI runs the role on Debian 12 (bookworm) and Debian 13 (trixie). On the local environment you can test the role with:
 
 ```
 molecule test
 ```
 
-Requires Molecule, Vagrant and `python-vagrant, molecule-goss, molecule-vagrant` to be installed.For developing and testing the role we use Travis CI, Molecule and Vagrant. On the local environment you can easily test the role with.
+Use `molecule converge` and `molecule login` to iterate on a running container. Requires Docker (or a compatible container runtime), `molecule`, `molecule-plugins[docker]` and `ansible-lint` to be installed.
 
 
 License
