@@ -23,7 +23,7 @@ Role Variables
   murmur_autobantime: "300"
   murmur_logfile: "/var/log/mumble-server/mumble-server.log"
   murmur_pidfile: "/var/run/mumble-server/mumble-server.pid"
-  murmur_welcometext: "Welcome on my mumble server!"
+  murmur_welcometext: "<br />Welcome to this server running <b>Mumble</b>.<br />Enjoy your stay!<br />"
   murmur_port: "64738"
   murmur_host: ""
   murmur_serverpassword: ""
@@ -53,8 +53,8 @@ Role Variables
   murmur_registerhostname: "mymumblehostname.domain.org"
   
   # for dev
-  # murmur_bonjour: "True"
-  murmur_bonjour: "False"
+  # murmur_bonjour: "true"
+  murmur_bonjour: "false"
   murmur_uname: "mumble-server"
   murmur_certrequired: "False"
   murmur_sendversion: "True"
@@ -65,19 +65,13 @@ Role Variables
   murmur_sslkey: "/etc/ssl/mumble-server-key.pem"
   murmur_sslciphers: "EECDH+AESGCM:EDH+aRSA+AESGCM"
   
-  murmur_monitoring_monit_enabled: False
-  murmur_monitoring_munin_enabled: False
-  murmur_monitoring_munin_packages:
-    - python3-zeroc-ice
-    - zeroc-ice-slice
-  
   # mumble-web settings
   mumble_web: False
   mumble_web_path: /usr/lib/node_modules/mumble-web/
   # to define use yaml multiline string
   mumble_web_config: ""
   # mumble_web_supplementary_groups:
-  #   - letsencrypt
+  #   - mumble-server
   mumble_web_listen: "443"
   mumble_web_ssl_activated: True
   mumble_web_ssl_target: True

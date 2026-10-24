@@ -1,0 +1,145 @@
+---
+argument_specs:
+  main:
+    short_description: Install and configure a Mumble server (murmur) and optionally mumble-web
+    description:
+      - Installs mumble-server and configures it. Values of the C(murmur_*) options are written verbatim into the ini file, therefore most of them are strings.
+    options:
+      murmur_database:
+        type: str
+      murmur_dbdriver:
+        type: str
+        description:
+          - Database driver. If empty, the SQLite database at C(murmur_database) is used, otherwise the C(murmur_db*) options are written.
+      murmur_ice:
+        type: str
+      murmur_icesecretread:
+        type: str
+      murmur_icesecretwrite:
+        type: str
+      murmur_autobanattempts:
+        type: str
+      murmur_autobantimeframe:
+        type: str
+      murmur_autobantime:
+        type: str
+      murmur_logfile:
+        type: str
+      murmur_pidfile:
+        type: str
+      murmur_welcometext:
+        type: str
+        description:
+          - Welcome text, HTML allowed.
+      murmur_port:
+        type: str
+      murmur_host:
+        type: str
+      murmur_serverpassword:
+        type: str
+      murmur_bandwidth:
+        type: str
+      murmur_users:
+        type: str
+      murmur_opusthreshold:
+        type: str
+      murmur_channelcountlimit:
+        type: str
+      murmur_channelnestinglimit:
+        type: str
+      murmur_channelname:
+        type: str
+        description:
+          - regexp to validate channel or usernames
+      murmur_username:
+        type: str
+      murmur_textmessagelength:
+        type: str
+      murmur_imagemessagelength:
+        type: str
+      murmur_allowhtml:
+        type: str
+      murmur_logdays:
+        type: str
+      murmur_registername:
+        type: str
+        description:
+          - name for root channel and entry in mumble main server list
+      murmur_registerpassword:
+        type: str
+      murmur_registerurl:
+        type: str
+      murmur_registerhostname:
+        type: str
+      murmur_bonjour:
+        type: str
+        description:
+          - Set to C("true") for development.
+      murmur_uname:
+        type: str
+      murmur_certrequired:
+        type: str
+      murmur_sendversion:
+        type: str
+      murmur_icewarnunknownproperties:
+        type: str
+      murmur_icemessagesizemax:
+        type: str
+      murmur_sslcert:
+        type: str
+      murmur_sslkey:
+        type: str
+      murmur_sslciphers:
+        type: str
+      mumble_web:
+        type: bool
+        description:
+          - Install mumble-web.
+      mumble_web_path:
+        type: str
+      mumble_web_config:
+        type: str
+        description:
+          - Content of the mumble-web C(config.local.js) (use a YAML multiline string).
+      mumble_web_listen:
+        type: str
+      mumble_web_ssl_activated:
+        type: bool
+      mumble_web_ssl_target:
+        type: bool
+      murmur_dbusername:
+        type: str
+        description:
+          - Database user. Used if C(murmur_dbdriver) is set.
+      murmur_dbpassword:
+        type: str
+        description:
+          - Database password. Used if C(murmur_dbdriver) is set.
+      murmur_dbhost:
+        type: str
+        description:
+          - Database host. Used if C(murmur_dbdriver) is set.
+      murmur_dbport:
+        type: str
+        description:
+          - Database port. Used if C(murmur_dbdriver) is set.
+      murmur_dbprefix:
+        type: str
+        description:
+          - Database table prefix. Used if C(murmur_dbdriver) is set.
+      murmur_dbopts:
+        type: str
+        description:
+          - Additional database options. Used if C(murmur_dbdriver) is set.
+      murmur_sslca:
+        type: str
+        description:
+          - Path of the CA certificate. Optional.
+      murmur_superuser_password:
+        type: str
+        description:
+          - Password of the SuperUser account. If unset, it is not changed.
+      mumble_web_supplementary_groups:
+        type: raw
+        description:
+          - Value for C(SupplementaryGroups) of the mumble-web systemd unit (space separated). Optional.
