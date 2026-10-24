@@ -11,8 +11,7 @@ Ansible role that installs and configures a Mumble server (murmur) and optionall
 
 ## Checks
 
-- `ansible-lint .` must pass (config in `.ansible-lint`, it excludes `molecule/` and `.github/`); install `requirements.yml` first with `ansible-galaxy install -r requirements.yml`
-- `yamllint .` uses `.yamllint`
+- `ansible-lint .` must pass (default configuration, no repo config); install `requirements.yml` first with `ansible-galaxy install -r requirements.yml`
 - `molecule test` runs the role in a systemd Docker container; CI uses the shared `systemli/github-ansible-workflow` on Debian 12 and 13
 - `ansible-lint` creates `.ansible/`; it is git ignored, never commit it
 

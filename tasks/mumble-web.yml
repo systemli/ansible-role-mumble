@@ -6,7 +6,7 @@
 - name: Install mumble-web
   community.general.npm:
     name: mumble-web
-    global: True
+    global: true
 
 - name: Copy mumble-web unit file
   ansible.builtin.template:
@@ -31,6 +31,6 @@
 - name: Wnable and start mumble-web
   ansible.builtin.systemd:
     name: mumble-web
-    daemon-reload: yes
-    enabled: True
+    daemon-reload: true
+    enabled: true
     state: started

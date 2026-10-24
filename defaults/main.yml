@@ -52,7 +52,7 @@ murmur_sslkey: "/etc/ssl/mumble-server-key.pem"
 murmur_sslciphers: "EECDH+AESGCM:EDH+aRSA+AESGCM"
 
 # mumble-web settings
-mumble_web: False
+mumble_web: false
 mumble_web_path: /usr/lib/node_modules/mumble-web/
 # to define use yaml multiline string
 mumble_web_config: ""
@@ -60,5 +60,5 @@ mumble_web_config: ""
 #   - mumble-server
 
 mumble_web_listen: "443"
-mumble_web_ssl_activated: True
-mumble_web_ssl_target: True
+mumble_web_ssl_activated: true
+mumble_web_ssl_target: true

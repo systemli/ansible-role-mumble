@@ -8,11 +8,11 @@
   ansible.builtin.command: murmurd -ini /etc/mumble-server.ini -supw "{{ murmur_superuser_password }}"
   register: murmurd_superuser_password
   changed_when: murmurd_superuser_password.rc != 0
-  failed_when: False
+  failed_when: false
 
 - name: Restart mumble-web
   ansible.builtin.systemd:
-    daemon_reload: True
+    daemon_reload: true
     name: mumble-web
     state: restarted
 

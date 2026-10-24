@@ -20,5 +20,5 @@ user:
   mumble-server:
     exists: true
     groups:
-    - mumble-server
+      - mumble-server
     home: /var/lib/mumble-server
