@@ -1,0 +1,189 @@
+---
+argument_specs:
+  main:
+    short_description: Install and configure a Mumble server (murmur) and optionally mumble-web
+    description:
+      - Installs mumble-server and configures it. Values of the C(murmur_*) options are written verbatim into the ini file, therefore most of them are strings.
+    options:
+      murmur_database:
+        type: str
+        default: /var/lib/mumble-server/mumble-server.sqlite
+      murmur_dbdriver:
+        type: str
+        description:
+          - Database driver. If empty, the SQLite database at C(murmur_database) is used, otherwise the C(murmur_db*) options are written.
+        default: ''
+      murmur_ice:
+        type: str
+        default: tcp -h 127.0.0.1 -p 6502
+      murmur_icesecretread:
+        type: str
+        default: ''
+      murmur_icesecretwrite:
+        type: str
+        default: ''
+      murmur_autobanattempts:
+        type: str
+        default: '10'
+      murmur_autobantimeframe:
+        type: str
+        default: '120'
+      murmur_autobantime:
+        type: str
+        default: '300'
+      murmur_logfile:
+        type: str
+        default: /var/log/mumble-server/mumble-server.log
+      murmur_pidfile:
+        type: str
+        default: /var/run/mumble-server/mumble-server.pid
+      murmur_welcometext:
+        type: str
+        description:
+          - Welcome text, HTML allowed.
+        default: <br />Welcome to this server running <b>Mumble</b>.<br />Enjoy your stay!<br />
+      murmur_port:
+        type: str
+        default: '64738'
+      murmur_host:
+        type: str
+        default: ''
+      murmur_serverpassword:
+        type: str
+        default: ''
+      murmur_bandwidth:
+        type: str
+        default: '72000'
+      murmur_users:
+        type: str
+        default: '100'
+      murmur_opusthreshold:
+        type: str
+        default: '100'
+      murmur_channelcountlimit:
+        type: str
+        default: '1000'
+      murmur_channelnestinglimit:
+        type: str
+        default: '10'
+      murmur_channelname:
+        type: str
+        description:
+          - regexp to validate channel or usernames
+        default: ''
+      murmur_username:
+        type: str
+        default: ''
+      murmur_textmessagelength:
+        type: str
+        default: '5000'
+      murmur_imagemessagelength:
+        type: str
+        default: '131072'
+      murmur_allowhtml:
+        type: str
+        default: 'True'
+      murmur_logdays:
+        type: str
+        default: '-1'
+      murmur_registername:
+        type: str
+        description:
+          - name for root channel and entry in mumble main server list
+        default: MyMumbleServerRegisterName
+      murmur_registerpassword:
+        type: str
+        default: password
+      murmur_registerurl:
+        type: str
+        default: https://mymumbleserverurl.org
+      murmur_registerhostname:
+        type: str
+        default: mymumblehostname.domain.org
+      murmur_bonjour:
+        type: str
+        description:
+          - Set to C("true") for development.
+        default: 'false'
+      murmur_uname:
+        type: str
+        default: mumble-server
+      murmur_certrequired:
+        type: str
+        default: 'False'
+      murmur_sendversion:
+        type: str
+        default: 'True'
+      murmur_icewarnunknownproperties:
+        type: str
+        default: '1'
+      murmur_icemessagesizemax:
+        type: str
+        default: '65536'
+      murmur_sslcert:
+        type: str
+        default: /etc/ssl/mumble-server-cert.pem
+      murmur_sslkey:
+        type: str
+        default: /etc/ssl/mumble-server-key.pem
+      murmur_sslciphers:
+        type: str
+        default: EECDH+AESGCM:EDH+aRSA+AESGCM
+      mumble_web:
+        type: bool
+        description:
+          - Install mumble-web.
+        default: false
+      mumble_web_path:
+        type: str
+        default: /usr/lib/node_modules/mumble-web/
+      mumble_web_config:
+        type: str
+        description:
+          - Content of the mumble-web C(config.local.js) (use a YAML multiline string).
+        default: ''
+      mumble_web_listen:
+        type: str
+        default: '443'
+      mumble_web_ssl_activated:
+        type: bool
+        default: true
+      mumble_web_ssl_target:
+        type: bool
+        default: true
+      murmur_dbusername:
+        type: str
+        description:
+          - Database user. Used if C(murmur_dbdriver) is set.
+      murmur_dbpassword:
+        type: str
+        description:
+          - Database password. Used if C(murmur_dbdriver) is set.
+      murmur_dbhost:
+        type: str
+        description:
+          - Database host. Used if C(murmur_dbdriver) is set.
+      murmur_dbport:
+        type: str
+        description:
+          - Database port. Used if C(murmur_dbdriver) is set.
+      murmur_dbprefix:
+        type: str
+        description:
+          - Database table prefix. Used if C(murmur_dbdriver) is set.
+      murmur_dbopts:
+        type: str
+        description:
+          - Additional database options. Used if C(murmur_dbdriver) is set.
+      murmur_sslca:
+        type: str
+        description:
+          - Path of the CA certificate. Optional.
+      murmur_superuser_password:
+        type: str
+        description:
+          - Password of the SuperUser account. If unset, it is not changed.
+      mumble_web_supplementary_groups:
+        type: raw
+        description:
+          - Value for C(SupplementaryGroups) of the mumble-web systemd unit (space separated). Optional.
