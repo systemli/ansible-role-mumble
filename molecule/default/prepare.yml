@@ -1,7 +1,7 @@
 ---
 - name: Prepare
   hosts: all
-  become: True
+  become: true
   vars:
     murmur_sslcert: "/etc/ssl/mumble-server-cert.pem"
     murmur_sslkey: "/etc/ssl/mumble-server-key.pem"
